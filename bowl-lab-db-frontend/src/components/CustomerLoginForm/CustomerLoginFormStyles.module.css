@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  text-align: center;
+  height: 100dvh;
+  min-height: 500px;
+  align-items: center;
+  background-color: #f0f4f8; /* Light background color */
+
+  .title {
+    font-size: 2rem;
+    color: #333;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 200px;
+  }
+
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 126px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
+  }
+
+  button:hover {
+    transform: scale(1.01);
+  }
+
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 10px;
+  }
+
+  .input {
+    gap: 5px;
+  }
+}
