@@ -1,0 +1,94 @@
+/* General layout for the order section */
+.orderSection {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Styling the menu list */
+.menuList {
+  list-style: none;
+  padding: 0;
+}
+
+.menuItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.menuItem button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menuItem button:hover {
+  background-color: #0056b3;
+}
+
+/* Cart section styling */
+.cartSection {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #e9ecef;
+  border-radius: 8px;
+}
+
+.cartSection h3 {
+  margin-bottom: 15px;
+}
+
+/* Cart list styling */
+.cartSection ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cartSection ul li {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+/* Place order button */
+.placeOrderButton {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.placeOrderButton:hover {
+  background-color: #218838;
+}
+
+/* Error and success messages */
+.error {
+  color: #dc3545;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.success {
+  color: #28a745;
+  font-weight: bold;
+  margin-bottom: 15px;
+}

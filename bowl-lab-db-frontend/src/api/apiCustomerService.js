@@ -23,14 +23,14 @@ const apiCustomerService = {
 
       // return true if good login
       if (response.status === 200) {
-        return true;
+        return response.data;
       }
 
       // false if not
-      return false;
+      return null;
     } catch (error) {
       console.log(error);
-      return false;
+      return null;
     }
   },
 

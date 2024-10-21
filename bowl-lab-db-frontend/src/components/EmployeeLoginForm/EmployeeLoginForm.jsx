@@ -1,35 +1,49 @@
 import React, { useState } from "react";
-import apiCustomerService from "../../api/apiCustomerService";
-import styles from "./CustomerLoginFormStyles.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import styles from "./EmployeeLoginFormStyles.module.css";
 
 /*
-Form for customers to log in
+Form for employees to log in
 */
-export const CustomerLoginForm = () => {
+export const EmployeeLoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const navigate = useNavigate();
+  // function to make api call to employee login
+  const login = async (email, password) => {
+    try {
+      const response = await axios.post("/employee/login", {
+        email,
+        password,
+      });
+
+      if (response.status === 200) {
+        console.log("Successful log in.");
+        return true;
+      }
+
+      console.log(response.data);
+
+      return false;
+    } catch (error) {
+      console.error("Error: ", error);
+      return false;
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // customer is null if login fails
-    const customer = await apiCustomerService.login(email, password);
+    // boolean result of successful login or not
+    const successful = await login(email, password);
 
-    if (customer != null) {
+    if (successful) {
       // good login
       setSuccessMessage("Login Successful.");
       setErrorMessage("");
-
-      // Store customer data in localStorage for use in customer dashboard
-      localStorage.setItem("customer", JSON.stringify(customer));
-
-      // navigate to /customer/order
-      navigate("/customer/order");
     } else {
       // bad login
       setSuccessMessage("");
@@ -38,14 +52,14 @@ export const CustomerLoginForm = () => {
   };
 
   return (
-    <section id="customer-login" className={styles.container}>
+    <section id="employee-login" className={styles.container}>
       <div>
         <div className={styles.title}>
-          <h2> Login </h2>
+          <h2>Employee Login</h2>
         </div>
 
-        {errorMessage && <p>{errorMessage}</p>}
-        {successMessage && <p>{successMessage}</p>}
+        {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+        {successMessage && <p className={styles.success}>{successMessage}</p>}
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.inputGroup}>
             <div className={styles.input}>
@@ -60,7 +74,7 @@ export const CustomerLoginForm = () => {
             <div>
               <label>Password:</label>
               <input
-                type="text"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -72,15 +86,11 @@ export const CustomerLoginForm = () => {
       </div>
       <div className={styles.links}>
         <p>
-          Don't have an account?{" "}
-          <Link to="/customer/register">Sign up here</Link>
-        </p>
-        <p>
-          Are you an employee? <Link to="/employee/login">Employee login</Link>
+          <Link to="/customer/login">Customer login</Link>
         </p>
       </div>
     </section>
   );
 };
 
-export default CustomerLoginForm;
+export default EmployeeLoginForm;
