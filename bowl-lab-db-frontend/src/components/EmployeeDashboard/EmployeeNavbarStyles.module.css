@@ -1,0 +1,38 @@
+/* Main navbar container */
+.navbar {
+  background-color: #333;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+/* List styling to align links horizontally with spacing */
+.navList {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+/* List item styling */
+.navList li {
+  margin: 0;
+}
+
+/* Link styling */
+.navList li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for links */
+.navList li a:hover {
+  background-color: #555;
+  color: #ddd; /* Slight color change for hover */
+}

@@ -1,0 +1,110 @@
+/* Main section for the employee menu */
+.orderSection {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Section headers */
+.orderSection h2,
+.orderSection h3 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* List styling for menu items */
+.menuList {
+  list-style: none;
+  padding: 0;
+}
+
+/* Individual menu item card */
+.menuItem {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Container for the name and description */
+.menuItem p {
+  margin: 0;
+  color: #555;
+  flex: 1; /* Takes up remaining space, pushing buttons to the right */
+}
+
+.menuItem strong {
+  color: #333;
+}
+
+/* Button container to align buttons to the right */
+.buttonContainer {
+  display: flex;
+  gap: 5px;
+}
+
+/* Buttons within each menu item */
+.menuItem button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.menuItem button:hover {
+  background-color: #0056b3;
+}
+
+/* Section for adding or editing items */
+.cartSection {
+  background-color: #f3f3f3;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.cartSection input[type="text"],
+.cartSection input[type="number"] {
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Add and Save button styling */
+.placeOrderButton {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.placeOrderButton:hover {
+  background-color: #218838;
+}
+
+/* Cancel button styling */
+.placeOrderButton:last-child {
+  background-color: #dc3545;
+}
+
+.placeOrderButton:last-child:hover {
+  background-color: #c82333;
+}

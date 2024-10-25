@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./EmployeeLoginFormStyles.module.css";
 
@@ -12,38 +12,49 @@ export const EmployeeLoginForm = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const navigate = useNavigate();
+
   // function to make api call to employee login
   const login = async (email, password) => {
     try {
-      const response = await axios.post("/employee/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:8080/api/employee/login",
+        {
+          email,
+          password,
+        }
+      );
 
       if (response.status === 200) {
         console.log("Successful log in.");
-        return true;
+        return response.data;
       }
 
       console.log(response.data);
 
-      return false;
+      return null;
     } catch (error) {
       console.error("Error: ", error);
-      return false;
+      return null;
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // boolean result of successful login or not
-    const successful = await login(email, password);
+    // result of successful login or not
+    const employee = await login(email, password);
 
-    if (successful) {
+    if (employee != null) {
       // good login
       setSuccessMessage("Login Successful.");
       setErrorMessage("");
+
+      // Store customer data in localStorage for use in customer dashboard
+      localStorage.setItem("employee", JSON.stringify(employee));
+
+      // navigate to /customer/order
+      navigate("/employee/orders");
     } else {
       // bad login
       setSuccessMessage("");
