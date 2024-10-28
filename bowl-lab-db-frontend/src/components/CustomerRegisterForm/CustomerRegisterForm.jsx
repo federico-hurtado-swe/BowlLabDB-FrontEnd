@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import apiCustomerService from "../../api/apiCustomerService";
 import styles from "./CustomerRegisterFormStyles.module.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 /*
 Form for customers to register.
@@ -14,6 +15,8 @@ export const CustomerRegisterForm = () => {
   const [passkey, setPasskey] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +34,8 @@ export const CustomerRegisterForm = () => {
     if (apiResponse.success) {
       setErrorMessage("");
       setSuccessMessage("Successfully registered.");
+
+      navigate("/customer/login");
     } else {
       setEmail(apiResponse.message);
       setSuccessMessage("");

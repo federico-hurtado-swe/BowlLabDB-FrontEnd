@@ -7,7 +7,7 @@ const CustomerNavbar = () => {
     <nav className={styles.navbar}>
       <ul className={styles.navList}>
         <li>
-          <Link to="/customer/order"> Order </Link>
+          <Link to="/customer/order"> Place Order </Link>
         </li>
         <li>
           <Link to="/customer/viewOrders"> My Orders </Link>

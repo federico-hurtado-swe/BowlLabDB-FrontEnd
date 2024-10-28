@@ -35,8 +35,8 @@ const CustomerProfile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:8080/api/customer/update",
+      const response = await axios.put(
+        `http://localhost:8080/api/customer/update/${customer.id}`,
         updatedCustomer
       );
       if (response.status === 200) {

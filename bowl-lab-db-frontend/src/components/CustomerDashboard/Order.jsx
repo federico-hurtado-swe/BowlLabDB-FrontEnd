@@ -7,6 +7,7 @@ const Order = () => {
   const [cart, setCart] = useState([]); // List of items in the current customer's cart
   const [errorMessage, setErrorMessage] = useState(""); // Error message if API fails
   const [successMessage, setSuccessMessage] = useState(""); // Success message after order placement
+  const [customer, setCustomer] = useState(null); // Customer data
 
   // Fetch menu items when component mounts
   useEffect(() => {
@@ -25,6 +26,14 @@ const Order = () => {
       }
     };
 
+    // Retrieve customer data from localStorage
+    const storedCustomer = localStorage.getItem("customer");
+    if (storedCustomer) {
+      setCustomer(JSON.parse(storedCustomer));
+    } else {
+      setErrorMessage("No customer information found. Please log in.");
+    }
+
     getMenuItems();
   }, []);
 
@@ -35,29 +44,35 @@ const Order = () => {
 
   // Function to place an order
   const placeOrder = async () => {
+    if (!customer) {
+      setErrorMessage("No customer information found.");
+      return;
+    }
+
     try {
+      // Prepare order data according to the expected backend structure
       const orderData = {
-        items: cart, // Send the cart items in the request body
+        custID: customer.id, // Customer ID from localStorage
+        orderItems: cart.map((item) => ({
+          item_id: item.id, // Only send item ID for each item in the cart
+        })),
       };
 
-      // // POST request to place the order
-      // const response = await axios.post(
-      //   "http://localhost:8080/api/order/create",
-      //   orderData
-      // );
+      // POST request to place the order
+      const response = await axios.post(
+        "http://localhost:8080/api/order/create",
+        orderData
+      );
 
-      // if (response.status === 200) {
-      //   setSuccessMessage("Order placed successfully!");
-      //   setCart([]); // Clear the cart after successful order
-      // } else {
-      //   setErrorMessage("Failed to place order.");
-      // }
-
-      setSuccessMessage("Order placed successfully!");
-      setCart([]); // clear cart
+      if (response.status === 201) {
+        setSuccessMessage("Order placed successfully!");
+        setCart([]); // Clear the cart after successful order
+      } else {
+        setErrorMessage("Failed to place order.");
+      }
     } catch (error) {
       setErrorMessage("Failed to place order.");
-      console.error(error);
+      console.error("Error:", error);
     }
   };
 
@@ -70,7 +85,7 @@ const Order = () => {
       <ul className={styles.menuList}>
         {menuItems.map((item, index) => (
           <li key={index} className={styles.menuItem}>
-            {item.name} - {item.price}
+            {item.name} - {item.description} - {item.price}
             <button onClick={() => addToCart(item)}>Add to Cart</button>
           </li>
         ))}
