@@ -21,6 +21,9 @@ const EmployeeNavbar = () => {
         <li>
           <Link to="/employee/profile">Profile</Link>
         </li>
+        <li>
+          <Link to="/employee/manage-employees">Manage employees</Link>
+        </li>
       </ul>
     </nav>
   );

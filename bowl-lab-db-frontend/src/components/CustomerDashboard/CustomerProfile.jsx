@@ -10,13 +10,12 @@ const CustomerProfile = () => {
     lastName: "",
     email: "",
     phone: "",
+    passkey: "",
   });
 
-  // get customer data when the page mounts
+  // Get customer data when the page mounts
   useEffect(() => {
     const storedCustomer = localStorage.getItem("customer");
-
-    console.log("Found customer: ", storedCustomer);
 
     if (storedCustomer) {
       const parsedCustomer = JSON.parse(storedCustomer);
@@ -40,8 +39,11 @@ const CustomerProfile = () => {
         updatedCustomer
       );
       if (response.status === 200) {
-        setCustomer(updatedCustomer); // Update the displayed customer info
-        localStorage.setItem("customer", JSON.stringify(updatedCustomer)); // Update localStorage
+        setCustomer({ ...updatedCustomer, passkey: "" }); // Clear passkey after update
+        localStorage.setItem(
+          "customer",
+          JSON.stringify({ ...updatedCustomer, passkey: "" })
+        ); // Update localStorage without passkey
         setIsEditing(false); // Exit edit mode
       } else {
         console.error("Failed to update customer.");
@@ -94,6 +96,16 @@ const CustomerProfile = () => {
                 type="tel"
                 name="phone"
                 value={updatedCustomer.phone}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label>New Passkey:</label>
+              <input
+                type="password"
+                name="passkey"
+                value={updatedCustomer.passkey}
                 onChange={handleChange}
                 required
               />

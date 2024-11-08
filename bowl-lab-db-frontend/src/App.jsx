@@ -20,6 +20,7 @@ import EmployeeProfile from "./components/EmployeeDashboard/EmployeeProfile";
 import EmployeeReviews from "./components/EmployeeDashboard/EmployeeReviews";
 import EmployeeMenu from "./components/EmployeeDashboard/EmployeeMenu";
 import EmployeeLayout from "./EmployeeLayout";
+import ManageEmployees from "./components/EmployeeDashboard/ManageEmployees";
 
 function App() {
   return (
@@ -48,6 +49,10 @@ function App() {
           <Route path="/employee/profile" element={<EmployeeProfile />} />
           <Route path="/employee/reviews" element={<EmployeeReviews />} />
           <Route path="/employee/menu" element={<EmployeeMenu />} />
+          <Route
+            path="/employee/manage-employees"
+            element={<ManageEmployees />}
+          />
         </Route>
       </Routes>
     </Router>
