@@ -1,0 +1,53 @@
+/* Main section styling */
+.reviewsSection {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 800px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section header */
+.reviewsSection h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.reviewsSection p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Review list styling */
+.viewReviews h3 {
+  color: #444;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.viewReviews ul {
+  list-style: none;
+  padding: 0;
+}
+
+.viewReviews li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.viewReviews li p {
+  margin: 5px 0;
+}
+
+.viewReviews li p strong {
+  color: #444;
+}
