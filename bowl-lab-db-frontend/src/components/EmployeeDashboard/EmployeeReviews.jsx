@@ -33,9 +33,6 @@ const EmployeeReviews = () => {
             reviews.map((review) => (
               <li key={review.id}>
                 <p>
-                  <strong>Customer ID:</strong> {review.written_by}
-                </p>
-                <p>
                   <strong>Stars:</strong> {review.stars_given}
                 </p>
                 <p>
