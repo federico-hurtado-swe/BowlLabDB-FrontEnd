@@ -37,3 +37,14 @@
 .completeButton:hover {
   background-color: #218838;
 }
+
+.chartContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chartContainer canvas {
+  width: 800px !important;
+  height: 400px !important;
+}
